@@ -1,264 +1,220 @@
-# Group Report — Day 02
+# 02 — Group Problem Statement
 
 ## Thành viên nhóm
 
 | STT | Họ và tên | Mã học viên | Vai trò trong nhóm |
-|-----|-----------|-------------|--------------------|
-| 1   | Lê Quang Huy |  2A202601821  |                    |
-| 2   | Vũ Đức Anh   |               |                    |
-| 3   | Phạm Thị Liên |              |                    |
-| 4   | Đào Đức Mạnh |               |                    |
+|---:|---|---|---|
+| 1 | Vũ Đức Anh | 2A202601191 | Thành viên |
+| 2 | Lê Quang Huy | 2A202601821 | Thành viên |
+| 3 | Đào Đức Mạnh | 2A202601833 | Thành viên |
+| 4 | Phạm Liên | 2A202601795 | Thành viên |
 
----
+## 1. Group convergence
 
-# Phase 3 — Group Convergence
+Sau khi nghe các Problem Card, nhóm gom 12 candidates thành bốn cluster:
 
-## Bước 3.1 — Trình bày top candidate của từng người
-
-| # | Người đưa ra | Candidate problem | Người gặp vấn đề | Điểm nghẽn | Cảm nhận nhanh |
-|---|---|---|---|---|---|
-| 1 | Đức Anh | Daily report phải nộp ở 2 nơi (Discord và repo GitHub), nội dung 2 nơi không khớp nhau | Học viên trong khóa học | Làm cùng một việc 2 lần, ở 2 định dạng khác nhau | Mạnh, Liên, Huy suggest không dùng AI — chi phí bỏ ra không đáng so với vấn đề (fix bằng process/rule) |
-| 2 | Mạnh | Assignment classification — tổng hợp tài liệu từ nhiều nguồn, dùng OCR AI chuyển thành text rồi phân loại dạng đề | Học viên cần tổng hợp bài tập từ nhiều nguồn | Đọc + phân loại thủ công tài liệu từ nhiều nguồn | Giảm chi phí từ 200 phút/10 bài xuống 60 phút/10 bài. Mọi người đều đồng ý đây là candidate tốt |
-| 3 | Huy | Problem #2 — Tổng hợp & phân loại report product (report lỗi/tính năng/hành vi) | Quản lý sản phẩm | Khâu phân loại 8 lỗi/ngày để lọc ra bug hệ thống thật | Mọi người chốt hết là candidate hợp lý. Đức Anh đánh giá quy trình tích hợp nhiều bước classification + suggest phương án xử lý, và muốn nêu rõ quy trình kiểm soát đầu ra (human review) |
-| 4 | Liên | Thẩm định hồ sơ cho vay — chuyên viên tốn nhiều thời gian xử lý giấy tờ hồ sơ vay; quy trình hiện tại: tiếp nhận hồ sơ → xử lý hồ sơ → phê duyệt; dùng LLM xử lý thông tin | Chuyên viên thẩm định tín dụng | Xử lý giấy tờ/hồ sơ thủ công trước khi phê duyệt | Đang là hướng nhóm nghiêng về chọn |
-
-## Bước 3.2 — Gom trùng / cluster
-
-| Cluster | Candidates included | Pattern chung | Ghi chú |
-|---|---|---|---|
-| A — Report/nộp trùng lặp | Daily report (Đức Anh) | Cùng một thông tin phải nhập ở nhiều nơi | Nhóm nghiêng về xử lý bằng rule/process, không cần AI |
-| B — Đọc tài liệu + phân loại | Assignment classification (Mạnh), Report product (Huy), Thẩm định hồ sơ vay (Liên) | Tổng hợp thông tin từ nhiều nguồn/định dạng rồi phân loại để ra quyết định tiếp theo | Cả 3 candidate đều là bài toán classification + AI hỗ trợ; khác nhau ở mức độ rủi ro khi AI sai |
-
-## Bước 3.3 — Shortlist
-
-| Candidate | Vì sao vào shortlist | Rủi ro / điều chưa rõ |
+| Cluster | Candidate examples | Pattern chung |
 |---|---|---|
-| Assignment classification (Mạnh) | Có baseline thời gian rõ (200 phút → 60 phút/10 bài), workflow đơn giản, cả nhóm đồng thuận | Quy mô nhỏ (bối cảnh học tập), impact với doanh nghiệp thấp hơn |
-| Report product (Huy) | Workflow rõ, có số liệu (8 lỗi/ngày, 3/4 lỗi user), cần kiểm soát đầu ra rõ ràng | Cần định nghĩa ground truth để đo "phân loại đúng" |
-| Thẩm định hồ sơ cho vay (Liên) | Bối cảnh doanh nghiệp rõ (tài chính/ngân hàng), rủi ro cao nên đáng phân tích boundary kỹ, quy trình 3 bước dễ vẽ workflow | Dữ liệu hồ sơ vay nhạy cảm; sai sót AI có hậu quả tài chính/pháp lý; cần validate thêm với người trong ngành |
+| Hỗ trợ khách hàng và ngân hàng | Hỗ trợ ngân hàng; phân loại yêu cầu của khách hàng; tra cứu và chuyển trạng thái hồ sơ ngân hàng | Nhận yêu cầu từ khách hàng → đọc hiểu nội dung → xác định intent/ưu tiên → lấy thông tin còn thiếu → chuyển đúng bộ phận hoặc phản hồi |
+| Phân loại báo cáo và số hóa | Phân loại báo cáo của khách hàng và số hóa; số hóa biểu mẫu/PDF; trích xuất thông tin từ hồ sơ đính kèm | Nhận email/ảnh/PDF → đọc tài liệu → xác định loại tài liệu → trích xuất metadata → lưu hoặc chuyển vào hệ thống |
+| Tìm kiếm và quản lý tài liệu | Tìm lại quyết định cũ trong tài liệu; tìm FAQ/quy trình nội bộ; gắn nhãn và sắp xếp tài liệu | Người dùng có nhiều nguồn rời rạc → tìm kiếm/đọc thủ công → chọn thông tin phù hợp → lưu hoặc chia sẻ lại |
+| Học tập và tài nguyên giáo dục | Phân loại tài nguyên học tập; tìm bài tập theo chủ đề/độ khó; tạo phiên bản bài tương tự cho nhiều lớp | Thu thập học liệu → đọc và phân loại → gắn chủ đề/cấp độ → tìm lại hoặc điều chỉnh cho đối tượng phù hợp |
 
-Daily report (Đức Anh) không vào shortlist: cả nhóm (Mạnh, Liên, Huy) đã đồng thuận đây là vấn đề nên xử lý bằng process/rule, chi phí làm AI không đáng.
+### Shortlist và chấm điểm
 
-## Bước 3.4 — Score để đồng thuận
+Thang điểm 1–5: 1 là yếu, 5 là mạnh. Điểm “bằng chứng” dưới đây là đánh giá sơ bộ trong phase hội tụ, chưa phải kết quả validation cuối cùng.
 
-| Candidate | Actor rõ | Workflow rõ | Pain có evidence | Impact đo được | Làm trong lab | So sánh R/W/A được | Nhóm hiểu domain | Tổng |
+| Candidate | Actor rõ | Workflow rõ | Pain có thể kiểm chứng | Impact đo được | Làm được trong lab | So sánh R/W/A được | Nhóm hiểu domain | Tổng |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Assignment classification (Mạnh) | 5 | 5 | 5 | 5 | 5 | 3 | 5 | 33 |
-| Report product (Huy) | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 28 |
-| Thẩm định hồ sơ cho vay (Liên) | 5 | 5 | 3 | 4 | 3 | 5 | 3 | 28 |
+| Hỗ trợ ngân hàng | 5 | 5 | 4 | 5 | 4 | 5 | 4 | **32** |
+| Phân loại báo cáo khách hàng và số hóa | 5 | 5 | 4 | 4 | 5 | 5 | 4 | **32** |
+| Phân loại tài nguyên học tập | 4 | 4 | 4 | 3 | 5 | 4 | 5 | **29** |
 
-Candidate nhóm chọn:
+### Candidate được chọn
 
-```text
-Thẩm định hồ sơ cho vay (Liên)
-```
+Nhóm chọn **hỗ trợ ngân hàng**, nhưng không giữ cách hiểu quá rộng như “xây chatbot ngân hàng”. Nhóm thu hẹp candidate thành:
 
-Vì sao chọn:
+> Hỗ trợ nhân viên tuyến đầu phân loại yêu cầu của khách hàng và chuyển đúng bộ phận, kèm trích xuất các thông tin còn thiếu để nhân viên kiểm tra và xử lý tiếp.
 
-- Bối cảnh doanh nghiệp rõ và rủi ro cao — phù hợp để phân tích boundary, human-in-the-loop và so sánh Rule/Workflow/Agent sâu (điểm cao nhất ở tiêu chí này trong 3 candidate).
-- Quy trình 3 bước (tiếp nhận → xử lý → phê duyệt) dễ vẽ workflow trước/sau và dễ chỉ ra AI intervention point.
-- Đúng chủ đề lớp học (AI xử lý vấn đề cho doanh nghiệp), dễ tạo tranh luận khi thuyết trình.
+### Vì sao chọn candidate này
 
-Vì sao không chọn các candidate còn lại:
+- Actor và workflow khá rõ: nhân viên tuyến đầu nhận yêu cầu, phân loại và chuyển queue.
+- Có thể đo thời gian triage, tỷ lệ chuyển đúng queue và số lần khách hàng phải bổ sung thông tin.
+- Có thể bắt đầu bằng Rule/Workflow có AI hỗ trợ, không cần xây Agent tự hành.
+- Có thể thử nghiệm bằng dữ liệu đã ẩn danh hoặc dữ liệu mẫu, không cần truy cập hệ thống giao dịch thật.
+- Rủi ro có thể giới hạn nếu AI chỉ đề xuất intent, mức ưu tiên và queue; nhân viên vẫn là người xác nhận.
 
-- **Assignment classification (Mạnh):** điểm tổng cao nhất và có baseline thời gian rõ nhất (200 phút → 60 phút/10 bài), nhưng bối cảnh học tập nên impact với doanh nghiệp thấp hơn, ít đất để so sánh Rule/Workflow/Agent.
-- **Report product (Huy):** workflow và số liệu rõ, nhưng đo "phân loại đúng" khó có ground truth ngay trong lab; rủi ro khi AI sai thấp hơn candidate của Liên nên ít kịch tính hơn khi phân tích boundary.
+### Vì sao chưa chọn hai candidate còn lại
 
-Nếu có disagreement, nhóm xử lý thế nào:
+- **Phân loại báo cáo khách hàng và số hóa:** cũng có workflow tốt, nhưng “báo cáo” có thể bao gồm quá nhiều loại tài liệu; cần xác định schema và nguồn dữ liệu trước. Một phần bài toán này có thể trở thành một module trong bài hỗ trợ ngân hàng.
+- **Phân loại tài nguyên học tập:** dễ làm prototype, nhưng impact và baseline hiện chưa rõ bằng bài hỗ trợ ngân hàng; độ khó phân loại tài liệu cũng dễ phụ thuộc cảm nhận.
 
-```text
-Chưa phát sinh bất đồng — cả 4 thành viên đồng thuận chọn Thẩm định hồ sơ cho vay sau khi thảo luận.
-```
+## 2. Validation plan và bằng chứng hiện có
 
----
+> Phần này không tự ghi số liệu phỏng vấn khi nhóm chưa thực hiện. Các ô `[CẦN ĐIỀN]` phải được thay bằng dữ liệu thật sau khi hỏi người có kinh nghiệm hỗ trợ khách hàng hoặc vận hành ngân hàng.
 
-# Phase 4 — Quick Validation + Research giải pháp
+### Quick validation
 
-## Bước 4.1 — Quick validation
-
-> Phần này cần nhóm thực hiện phỏng vấn/khảo sát thật (2–3 người hoặc mini poll) trước khi điền. Chưa điền số liệu vì nhóm chưa thực hiện — không tự bịa số liệu chưa kiểm chứng.
-
-| Nguồn | Số người / số mẫu | Tín hiệu xác nhận | Tín hiệu phản bác | Nhóm sửa problem thế nào |
+| Nguồn | Số người / mẫu | Tín hiệu xác nhận cần tìm | Tín hiệu phản bác cần ghi | Nhóm sẽ sửa problem thế nào? |
 |---|---:|---|---|---|
-| Interview |  |  |  |  |
-| Survey / poll |  |  |  |  |
-| Log / review / ticket |  |  |  |  |
+| Phỏng vấn nhân viên chăm sóc khách hàng | [CẦN ĐIỀN: 2–3 người] | Có yêu cầu lặp lại; mất thời gian đọc và phân loại; chuyển sai queue hoặc phải hỏi lại | Hệ thống hiện tại đã tự phân loại chính xác; bottleneck thực tế nằm ở bước khác | Thu hẹp intent và queue, không gọi chung là “hỗ trợ ngân hàng” |
+| Mini survey / hỏi nhanh | [CẦN ĐIỀN: 5–10 người] | Nhiều người gặp cùng một loại yêu cầu; thời gian triage có thể đo | Pain xảy ra ít hoặc chỉ do một người | Đổi candidate hoặc chọn một intent có tần suất cao hơn |
+| Dữ liệu mẫu đã ẩn danh | [CẦN ĐIỀN: số ticket/email] | Có đủ nội dung để gắn nhãn intent và queue | Dữ liệu thiếu context hoặc chứa thông tin nhạy cảm không thể dùng | Dùng dữ liệu giả lập/ẩn danh và giảm scope |
 
-## Bước 4.2 — Research giải pháp đã có
+### Câu hỏi validation
 
-> Cần tìm 2–3 tool/case thật kèm link nguồn kiểm được. Chưa điền vì nhóm chưa research — tránh dùng claim không có nguồn.
+1. Lần gần nhất bạn phải phân loại một yêu cầu khách hàng là khi nào?
+2. Bạn mất bao lâu từ lúc nhận yêu cầu đến lúc chuyển đúng queue?
+3. Những loại yêu cầu nào hay bị chuyển nhầm nhất?
+4. Thông tin nào khách hàng thường bỏ thiếu khiến bạn phải hỏi lại?
+5. Nếu hệ thống chỉ đề xuất intent và queue, bạn muốn kiểm tra gì trước khi bấm xác nhận?
+
+## 3. Research giải pháp đã có
 
 | Nguồn / tool / case | Link | Họ giải quyết phần nào? | Điểm mạnh | Khoảng trống / rủi ro | Bài học cho nhóm |
 |---|---|---|---|---|---|
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
+| Microsoft Dynamics 365 Unified Routing | [Microsoft Learn](https://learn.microsoft.com/en-us/dynamics365/customer-service/administer/overview-unified-routing) | Định tuyến work item đến queue/nhân viên phù hợp dựa trên yêu cầu và năng lực | Kết hợp routing, queue và nhiều kênh; có thể dùng AI cùng rule | Đây là nền tảng doanh nghiệp; không chứng minh dữ liệu của nhóm sẽ đạt độ chính xác tương tự | Bài toán nên tách thành intent/priority/queue và có rule fallback |
+| Microsoft basic routing rulesets | [Microsoft Learn](https://learn.microsoft.com/en-us/dynamics365/customer-service/administer/create-rules-automatically-route-cases) | Route case bằng các luật cố định | Dễ giải thích, dễ kiểm tra, phù hợp với intent có tiêu chí rõ | Rule không đủ tốt khi câu khách hàng tự do hoặc thiếu context | Rule nên xử lý các trường hợp chắc chắn; AI chỉ hỗ trợ phần ngôn ngữ mơ hồ |
+| Microsoft AI Builder case routing | [Microsoft Learn](https://learn.microsoft.com/en-us/dynamics365/guidance/resources/cs-ai-case-deflection) | Tạo case từ inquiry và hỗ trợ phân loại/routing | Cho thấy pattern kết hợp email-to-case, AI Builder và routing | Cần dữ liệu gắn nhãn, kiểm thử và quyền truy cập hệ thống | Prototype nên bắt đầu bằng dữ liệu mẫu, không tích hợp trực tiếp hệ thống ngân hàng |
+| Amazon Textract | [AWS Documentation](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html) | Trích xuất text, form, table và key-value từ tài liệu | Hữu ích nếu yêu cầu có ảnh/PDF hoặc biểu mẫu đính kèm | OCR có thể sai; không tự quyết định nghiệp vụ ngân hàng | “Số hóa” chỉ là bước trích xuất input; vẫn cần người kiểm tra trước khi lưu/dùng |
 
----
+### Research takeaway
 
-# Phase 5 — Workflow + Problem Statement
+Các giải pháp hiện có đều gợi ý mô hình kết hợp: **Rule cho trường hợp chắc chắn, AI để đọc hiểu/phân loại phần ngôn ngữ hoặc tài liệu, và nhân viên xác nhận trước khi routing hoặc trả lời**. Vì vậy, nhóm không chọn Agent tự xử lý toàn bộ yêu cầu.
 
-## Bước 5.1 — Current workflow bản nhóm
+## 4. Current workflow của candidate đã chọn
 
-| Bước | Actor | Input | Output | Thời gian/tần suất | Ghi chú |
-|---|---|---|---|---|---|
-| 1 | Chuyên viên thẩm định | Hồ sơ vay (giấy tờ, sao kê, hợp đồng...) | Dữ liệu đã nhập | Mỗi hồ sơ | Nhập tay |
-| 2 | Chuyên viên thẩm định | Sao kê, giấy tờ thu nhập | Số liệu đã đọc/trích | ~1–2 giờ/hồ sơ | Đọc thủ công, mỗi loại giấy tờ một định dạng |
-| 3 | Chuyên viên thẩm định | Thông tin khách hàng | Kết quả tra CIC | Mỗi hồ sơ | Tra cứu ngoài hệ thống |
-| 4 | Chuyên viên thẩm định | Dữ liệu đã trích + CIC | Bảng đối chiếu | ~30–60 phút/hồ sơ | Đối chiếu tay, dễ sai sót khi khối lượng lớn |
-| 5 | Chuyên viên thẩm định | Bảng đối chiếu | Đề xuất phê duyệt | Mỗi hồ sơ | Handoff sang cấp phê duyệt |
-| 6 | Cấp phê duyệt | Đề xuất | Quyết định duyệt/từ chối | 3–5 ngày kể từ khi tiếp nhận | Bottleneck tổng thể của khách hàng |
+### Phạm vi workflow
 
-Bottleneck chính:
+Chỉ xét yêu cầu không thực hiện giao dịch trực tiếp, ví dụ: hỏi trạng thái hồ sơ, phí/dịch vụ, lỗi ứng dụng, yêu cầu hỗ trợ thẻ hoặc cần chuyển bộ phận. Không xét quyết định tín dụng, tư vấn đầu tư, xác thực danh tính hay thao tác chuyển tiền.
+
+| Bước | Actor | Input | Output | Thời gian / tần suất | Ghi chú |
+|---:|---|---|---|---|---|
+| 1 | Khách hàng | Tin nhắn/email/cuộc gọi | Yêu cầu hỗ trợ tự do | Phát sinh theo từng yêu cầu; không tính thời gian xử lý của nhân viên | Có thể kèm ảnh/PDF; không dùng dữ liệu thật trong prototype |
+| 2 | Nhân viên tuyến đầu | Yêu cầu của khách hàng | Nội dung được đọc và hiểu sơ bộ | Khoảng **2 phút/yêu cầu** | Baseline ước tính; cần đo lại bằng log/phỏng vấn. Đây là bottleneck tiềm năng |
+| 3 | Nhân viên tuyến đầu | Nội dung yêu cầu | Intent, mức ưu tiên, thông tin cần bổ sung | Khoảng **3 phút/yêu cầu** | Baseline ước tính; dễ không nhất quán giữa nhân viên |
+| 4 | Nhân viên tuyến đầu | Intent và thông tin khách hàng | Queue/bộ phận đích | Khoảng **1 phút/yêu cầu** | Baseline ước tính; có thể chuyển sai queue |
+| 5 | Nhân viên tuyến đầu | Case đã phân loại | Phản hồi ban đầu hoặc câu hỏi bổ sung | Khoảng **2 phút/yêu cầu** | Baseline ước tính; không tự hứa thời hạn nếu chưa xác minh |
+| 6 | Bộ phận chuyên môn | Case đã chuyển | Xử lý tiếp và cập nhật trạng thái | Khoảng **10–30 phút/case**, tùy loại yêu cầu; thường xảy ra sau bước 4–5 | Ngoài scope prototype; không tính vào thời gian triage |
+
+**Bottleneck chính:** Bước 2–4: đọc yêu cầu tự do, xác định intent và chọn queue phù hợp.
+
+## 5. Future workflow đề xuất
 
 ```text
-Đọc/trích thủ công giấy tờ (bước 2) và đối chiếu chéo tay (bước 4) — chiếm phần lớn trong 2–4 giờ xử lý/hồ sơ,
-đồng thời là nơi dễ phát sinh sai sót khi khối lượng hồ sơ lớn.
+1. Khách hàng gửi yêu cầu — phát sinh theo từng yêu cầu
+   ↓
+2. Hệ thống chuẩn hóa text / trích xuất file đính kèm nếu có — Rule/OCR, khoảng 30 giây
+   ↓
+3. AI đề xuất intent + mức ưu tiên + queue + thông tin còn thiếu — khoảng 30 giây
+   ↓
+4. Nhân viên kiểm tra nội dung, dữ liệu nhạy cảm và độ tin cậy — khoảng 1–2 phút
+   ├─ Đúng và đủ → xác nhận queue, soạn/gửi phản hồi theo mẫu — 1–2 phút
+   ├─ Thiếu thông tin → gửi câu hỏi bổ sung — khoảng 1 phút
+   └─ Không chắc / rủi ro cao → chuyển chuyên viên/xử lý thủ công — khoảng 2 phút
+   ↓
+5. Ghi nhận kết quả để đo chất lượng và cải thiện bộ rule/intent — khoảng 30 giây
 ```
 
-## Bước 5.2 — Future workflow bản nhóm
+### Thời gian dự kiến của future workflow
 
-```text
-Hồ sơ
-→ OCR + LLM trích xuất dữ liệu (thu nhập, hợp đồng, sao kê...)     -- Workflow (AI)
-→ Đối chiếu chéo tự động + gắn cờ mâu thuẫn (LLM + rule kiểm tra)  -- Workflow (AI + Rule)
-→ Mô hình scoring chuyên dụng tính điểm tín dụng                   -- Rule/mô hình đã kiểm toán, không dùng LLM
-→ LLM diễn giải điểm số bằng ngôn ngữ tự nhiên                     -- Workflow (AI)
-→ Chuyên viên review hồ sơ bị gắn cờ nghi vấn                      <-- human boundary
-→ Chuyên viên đề xuất
-→ Cấp phê duyệt ra quyết định cuối                                 <-- human boundary
+| Bước | Actor | Thời gian / tần suất | Ghi chú |
+|---:|---|---|---|
+| 1 | Hệ thống tiếp nhận | Tự động, theo từng yêu cầu | Không tính là thời gian thao tác của nhân viên |
+| 2 | Rule/OCR | Khoảng **30 giây/yêu cầu** | Chỉ trích xuất text/file; không kết luận nghiệp vụ |
+| 3 | AI phân loại | Khoảng **30 giây/yêu cầu** | Tạo đề xuất intent/priority/queue và confidence |
+| 4 | Nhân viên review | Khoảng **1–2 phút/yêu cầu** | Human boundary; kiểm tra nội dung và dữ liệu nhạy cảm |
+| 5a | Nhân viên xác nhận và phản hồi theo mẫu | Khoảng **1–2 phút/yêu cầu** | Chỉ áp dụng khi yêu cầu đủ thông tin và thuộc scope |
+| 5b | Nhân viên hỏi bổ sung | Khoảng **1 phút/yêu cầu** | Áp dụng khi thiếu trường bắt buộc |
+| 5c | Nhân viên chuyển chuyên viên | Khoảng **2 phút/yêu cầu** | Áp dụng khi confidence thấp hoặc rủi ro cao |
+| 6 | Hệ thống ghi nhận kết quả | Khoảng **30 giây/yêu cầu** | Lưu intent dự đoán, intent được sửa và queue cuối |
 
-Fallback: AI trích xuất/gắn cờ sai → chuyên viên phát hiện qua review hồ sơ nghi vấn (cần thêm cơ chế
-random sampling để audit các hồ sơ không bị gắn cờ, tránh bỏ sót sai sót trích xuất).
-```
+Với case thông thường, thời gian từ lúc nhận yêu cầu đến lúc xác định queue dự kiến giảm từ khoảng **6 phút** ở current workflow xuống khoảng **2–3 phút** ở future workflow. Nếu tính cả bước phản hồi và ghi nhận kết quả, tổng thời gian dự kiến là khoảng **4–6 phút/case**. Các con số này là giả định để thiết kế pilot, không phải kết quả đã được kiểm chứng.
 
-Before/after impact:
+### Bảng before/after
 
-| Metric | Trước | Sau kỳ vọng | Ghi chú |
+| Metric | Trước | Sau kỳ vọng | Cách đo / lưu ý |
 |---|---:|---:|---|
-| Thời gian xử lý/hồ sơ | 2–4 giờ | 30–45 phút | Target chính |
-| Thời gian khách hàng chờ | 3–5 ngày | Cần đo lại sau pilot | Phụ thuộc cả tốc độ phê duyệt |
-| Số bước thủ công | 6/6 | 2/7 (review nghi vấn + duyệt) | Chuyên viên chuyển từ xử lý toàn bộ sang xử lý ngoại lệ |
-| Bottleneck chính | Đọc/trích + đối chiếu tay | Review hồ sơ nghi vấn | Human boundary — điểm kiểm soát chất lượng |
-| Risk mới | Không có AI hallucination | Trích xuất sai không bị gắn cờ → bỏ sót; thiên lệch mô hình scoring | Cần audit ngẫu nhiên + kiểm toán mô hình scoring |
+| Thời gian từ lúc nhận đến lúc xác định queue | Khoảng **6 phút/yêu cầu** (ước tính từ bước 2–4) | **≤4,2 phút/yêu cầu**; kỳ vọng pilot 2–3 phút | Đo timestamp của case; thay baseline ước tính bằng log/phỏng vấn thật |
+| Tỷ lệ route đúng queue | [CẦN ĐIỀN] | ≥90% trên bộ test đã gắn nhãn | Chỉ đo trên các intent thuộc scope |
+| Số lần khách phải bổ sung thông tin do case thiếu trường | [CẦN ĐIỀN] | Giảm 20% | So sánh cùng loại yêu cầu |
+| Tỷ lệ output AI được nhân viên chấp nhận không sửa lớn | Chưa có | ≥80% trong pilot | Không dùng làm tiêu chí duy nhất về chất lượng |
+| Giao dịch/tư vấn sai do AI | Không chấp nhận | 0 trường hợp trong pilot | AI không được tự thực hiện giao dịch hoặc gửi câu trả lời nhạy cảm |
 
-## Bước 5.3 — Problem Statement v0
+**Human boundary:** Nhân viên phải kiểm tra intent, queue, mức ưu tiên, thông tin nhạy cảm và nội dung phản hồi trước khi xác nhận. AI không được tự truy cập số dư, tự xác thực danh tính, tự chuyển tiền, tự phê duyệt hồ sơ hoặc tự gửi tư vấn tài chính.
 
-| Field | Nội dung |
-|---|---|
-| **Actor** | Chuyên viên thẩm định tín dụng xử lý hồ sơ vay cá nhân; cấp phê duyệt ra quyết định cuối. |
-| **Workflow** | Tiếp nhận hồ sơ → nhập tay → đọc/trích giấy tờ thủ công → tra CIC → đối chiếu tay → đề xuất → phê duyệt. |
-| **Bottleneck** | Đọc/trích dữ liệu từ giấy tờ đa định dạng và đối chiếu chéo thủ công — chiếm phần lớn 2–4 giờ xử lý mỗi hồ sơ. |
-| **Impact** | Khách hàng chờ 3–5 ngày mới có kết quả; rủi ro sai sót tăng khi khối lượng hồ sơ lớn. |
-| **Success Metric** | Giảm thời gian xử lý/hồ sơ từ 2–4 giờ xuống ~30–45 phút; giảm tỷ lệ hồ sơ phải làm lại; không tăng tỷ lệ nợ xấu so với quy trình cũ (đo dài hạn sau triển khai). |
-| **Boundary** | AI không tự phê duyệt/từ chối; chỉ trích xuất, gắn cờ, tính điểm tham khảo. Điểm tín dụng dùng mô hình scoring truyền thống, không dùng LLM tự luận ra điểm. Người luôn quyết định cuối cùng. |
+**Fallback:** Nếu confidence thấp, intent ngoài danh mục, có dấu hiệu gian lận/khiếu nại nghiêm trọng hoặc yêu cầu liên quan giao dịch, hệ thống không tự xử lý; chuyển sang nhân viên/chuyên gia theo quy trình hiện tại.
 
----
+## 6. Problem Statement v0
 
-# Phase 6 — Rule / Workflow / Agent + Decision
+Nhân viên chăm sóc khách hàng ngân hàng phải đọc và phân loại các yêu cầu gửi qua nhiều kênh, xác định thông tin còn thiếu rồi chuyển case đến đúng bộ phận. Việc này mất thời gian, có thể không nhất quán và làm khách hàng phải chờ hoặc bổ sung thông tin nhiều lần. Nhóm muốn dùng AI để hỗ trợ đọc hiểu và đề xuất phân loại, nhưng chưa xác định được baseline, danh mục intent và ngưỡng an toàn phù hợp.
 
-## Bước 6.0 — Ma trận độ phù hợp với AI
+## 7. Problem Statement v1 — bản nhóm chọn
 
-Bài toán của nhóm nằm ở ô nào?
+Nhân viên chăm sóc khách hàng tuyến đầu cần giảm thời gian phân loại các yêu cầu hỗ trợ không giao dịch từ khách hàng thành intent và queue phù hợp. Hiện tại họ phải đọc nội dung tự do, tự xác định loại yêu cầu, kiểm tra thông tin còn thiếu và chuyển case bằng tay; bước này có nguy cơ chuyển sai queue hoặc phải hỏi lại khách hàng. Trong phạm vi pilot, nhóm sẽ kiểm tra liệu một workflow kết hợp rule và AI có thể đề xuất intent, mức ưu tiên, queue và trường thông tin còn thiếu để nhân viên xác nhận hay không.
 
-```text
-Độ phức tạp cao, độ mơ hồ cao (Agent có thể phù hợp, nhưng cần boundary, người thật kiểm tra và phương án quay về rất rõ)
-```
+**Actor:** Nhân viên chăm sóc khách hàng tuyến đầu.
 
-Vì sao:
+**Workflow:** Nhận yêu cầu → đọc hiểu → xác định intent/priority → kiểm tra thông tin thiếu → chọn queue → phản hồi hoặc chuyển chuyên môn.
 
-```text
-- Nhiều bước nối tiếp, nhiều nguồn dữ liệu (giấy tờ, sao kê, CIC) — độ phức tạp cao.
-- Đọc hiểu giấy tờ với định dạng đa dạng và đối chiếu chéo là việc có nhiều cách "đúng" chấp nhận được — độ mơ hồ cao.
-- Tuy vậy nhóm KHÔNG chọn Agent: các bước có thể cố định thành pipeline tuyến tính (trích xuất → đối chiếu → scoring →
-  diễn giải → review), AI không cần tự quyết định bước tiếp theo. Vì vậy Workflow là đủ.
-```
+**Bottleneck:** Đọc và phân loại yêu cầu tự do ở bước triage.
 
-## Bước 6.1 — So sánh Rule / Workflow / Agent
+**Impact:** Tăng thời gian xử lý ban đầu, tăng khả năng chuyển sai queue và làm khách hàng phải chờ/bổ sung thông tin.
 
-| Mức | Phương án cho bài toán nhóm | Khi nào đủ | Rủi ro | Chọn? |
+**Success metric:** Trong pilot, giảm ít nhất 30% thời gian xác định queue so với baseline thật; đạt tối thiểu 90% route đúng queue trên bộ test đã được người có chuyên môn gắn nhãn; không có trường hợp AI tự gửi hoặc tự thực hiện hành động nghiệp vụ nhạy cảm.
+
+**Boundary:** Chỉ dùng yêu cầu hỗ trợ không giao dịch và dữ liệu đã ẩn danh/giả lập. Không tự xác thực danh tính, truy vấn số dư, chuyển tiền, phê duyệt tín dụng, tư vấn đầu tư, xử lý khiếu nại nghiêm trọng hoặc gửi phản hồi cuối nếu chưa có người kiểm tra.
+
+**AI intervention point:** Sau khi yêu cầu được tiếp nhận và chuẩn hóa, trước bước nhân viên chọn intent/queue.
+
+## 8. So sánh No AI / Rule / Workflow / Agent
+
+| Phương án | Làm được gì | Ưu điểm | Hạn chế / rủi ro | Kết luận |
 |---|---|---|---|---|
-| **Rule** | OCR thuần + regex trích số liệu cho giấy tờ mẫu cố định; rule đối chiếu cho case đơn giản | Đủ cho giấy tờ chuẩn hóa cao (VD: mẫu sao kê ngân hàng lớn) | Không xử lý được giấy tờ đa định dạng, không đọc hiểu ngữ nghĩa | Dùng cho một phần trích xuất, không đủ toàn bộ |
-| **Workflow** | OCR+LLM trích xuất → LLM+rule đối chiếu/gắn cờ → mô hình scoring → LLM diễn giải → chuyên viên review | Hợp vì các bước tuyến tính, rõ input/output, AI chỉ hỗ trợ từng bước cụ thể | Trích xuất sai không bị gắn cờ → bỏ sót; cần audit ngẫu nhiên | **Chọn** |
-| **Agent** | Agent tự quyết định thu thập thêm giấy tờ, tự điều chỉnh quy trình thẩm định theo từng hồ sơ | Chỉ cần nếu quy trình có nhiều nhánh động, AI phải tự lập kế hoạch xử lý | Rủi ro cao trong domain tài chính: khó kiểm toán, khó giải thích, hậu quả pháp lý/compliance nếu sai | Chưa chọn |
+| No AI / process fix | Chuẩn hóa danh mục intent, form bắt buộc, FAQ và checklist triage | Rẻ, dễ kiểm soát, giảm input thiếu | Không xử lý tốt câu tự do; vẫn phải đọc và gắn nhãn thủ công | Bắt buộc làm nền, nhưng chưa đủ |
+| Rule | Dùng keyword, form field và điều kiện rõ để route | Dễ giải thích, dễ audit, phù hợp case đơn giản | Nhạy với cách diễn đạt; dễ fail khi nội dung thiếu context | Dùng cho intent chắc chắn và fallback |
+| Workflow | Chuẩn hóa input → AI đề xuất intent/priority/queue → nhân viên review → route → ghi kết quả | Phù hợp workflow tuyến tính; có human boundary và đo được | Cần bộ intent, dữ liệu test và cơ chế review | **Chọn** |
+| Agent | Tự đọc nhiều nguồn, hỏi bổ sung, quyết định bước tiếp theo và xử lý case | Có thể bao phủ quy trình dài, nhiều nhánh | Permission/rủi ro cao; khó audit; không cần thiết cho pilot | Chưa chọn |
 
-Mức chọn:
+### Mức chọn
 
-```text
-Workflow.
-```
+**Workflow có Rule và AI hỗ trợ, không chọn Agent.** Rule xử lý các trường hợp rõ; AI chỉ tạo đề xuất có cấu trúc; nhân viên là người quyết định cuối.
 
-Vì sao:
-
-- Trích xuất và đối chiếu cần AI hỗ trợ ngôn ngữ/ngữ nghĩa, nhưng chuỗi bước cố định, không cần AI tự lập kế hoạch.
-- Mô hình scoring dùng công cụ chuyên dụng (không phải LLM) để đảm bảo có thể kiểm toán — phù hợp domain tài chính.
-- Chuyên viên vẫn review hồ sơ nghi vấn và cấp phê duyệt vẫn quyết định cuối cùng, nên rủi ro được kiểm soát.
-
-Vì sao không chọn mức đơn giản hơn:
-
-```text
-Rule thuần không xử lý được việc đọc hiểu giấy tờ đa định dạng và đối chiếu ngữ nghĩa — đây là lý do
-bài toán cần AI (LLM), không chỉ dừng ở rule/regex.
-```
-
-## Bước 6.2 — Problem Statement v1
-
-| Field | Nội dung |
-|---|---|
-| **Actor** | Chuyên viên thẩm định tín dụng xử lý hồ sơ vay cá nhân; cấp phê duyệt ra quyết định cuối. |
-| **Workflow** | Tiếp nhận hồ sơ → OCR+LLM trích xuất → đối chiếu tự động + gắn cờ → mô hình scoring tính điểm → LLM diễn giải → chuyên viên review hồ sơ nghi vấn → đề xuất → phê duyệt. |
-| **Bottleneck** | Đọc/trích dữ liệu từ giấy tờ đa định dạng và đối chiếu chéo thủ công. |
-| **Impact** | Khách hàng chờ 3–5 ngày; rủi ro sai sót tăng khi khối lượng lớn. |
-| **Success Metric** | Giảm thời gian xử lý/hồ sơ xuống ~30–45 phút; giảm tỷ lệ làm lại; không tăng tỷ lệ nợ xấu (đo dài hạn). |
-| **Boundary** | AI không tự phê duyệt/từ chối; điểm tín dụng dùng mô hình scoring truyền thống có thể kiểm toán, không dùng LLM tự luận điểm. |
-| **AI intervention point** | Từ sau khi tiếp nhận hồ sơ đến trước khi chuyên viên đề xuất — AI hỗ trợ trích xuất, đối chiếu, tính điểm tham khảo và diễn giải. |
-| **Mức chọn** | Workflow: OCR+LLM trích xuất, LLM+rule đối chiếu/gắn cờ, mô hình scoring riêng, LLM diễn giải; chuyên viên review case nghi vấn. |
-| **Rủi ro & người thật kiểm tra** | Risk: trích xuất sai không bị gắn cờ (bỏ sót), thiên lệch mô hình scoring, rủi ro compliance với dữ liệu tài chính nhạy cảm. Người thật kiểm tra: chuyên viên review hồ sơ nghi vấn + cần bổ sung audit ngẫu nhiên; cấp phê duyệt quyết định cuối cùng. |
-
-## Bước 6.3 — Final decision
+## 9. Final decision
 
 | Câu hỏi | Yes / Not Yet / No | Ghi chú |
 |---|---|---|
-| Actor và workflow đã rõ chưa? | Yes | Actor và 8 bước workflow (trước/sau) đã rõ |
-| Baseline và success metric đã đo được chưa? | Not Yet | Baseline 2–4 giờ/hồ sơ dựa trên mô tả của Liên, chưa được nhóm validate với chuyên viên thật (Phase 4 chưa thực hiện) |
-| Có data/input đủ dùng chưa? | Not Yet | Cần mẫu hồ sơ vay (đã ẩn danh) để thử pipeline trích xuất/đối chiếu |
-| Nếu AI sai, hậu quả có chấp nhận được không? | Not Yet | Domain tài chính — sai sót có thể ảnh hưởng phê duyệt khoản vay; cần cơ chế audit ngẫu nhiên trước khi mở rộng |
-| Có người review/owner vận hành không? | Yes | Chuyên viên thẩm định + cấp phê duyệt |
-| Có cách non-AI đơn giản hơn không? | Not Yet | Rule/OCR thuần chỉ đủ cho một phần giấy tờ chuẩn hóa, chưa được nhóm định lượng tỷ lệ % |
+| Actor và workflow đã rõ chưa? | **Yes** | Đã thu hẹp vào nhân viên tuyến đầu và bước triage |
+| Baseline và success metric đã đo được chưa? | **Not Yet** | Metric đã định nghĩa nhưng cần đo baseline thật |
+| Có data/input đủ dùng chưa? | **Not Yet** | Cần dữ liệu ẩn danh hoặc bộ dữ liệu giả lập có nhãn |
+| Nếu AI sai, hậu quả có chấp nhận được không? | **Yes, có điều kiện** | Chỉ pilot ở triage không giao dịch, luôn có người review |
+| Có người review/owner vận hành không? | **Not Yet** | Cần xác định nhân viên/mentor chịu trách nhiệm kiểm tra |
+| Có cách non-AI đơn giản hơn không? | **Yes** | Form, taxonomy, checklist và rule là nền tảng bắt buộc |
 
-Decision:
+### Quyết định: **Not Yet cho production; Go cho pilot nhỏ có kiểm soát**
 
-```text
-Not Yet.
-```
+Nhóm chưa đủ bằng chứng để triển khai trong môi trường ngân hàng thật vì chưa có baseline, dữ liệu đã ẩn danh và owner vận hành. Tuy nhiên, nhóm có thể **Go với pilot offline** trên bộ case giả lập/ẩn danh để đo chất lượng phân loại, thời gian review và tỷ lệ route đúng.
 
-Lý do:
+### Pilot đề xuất
 
-```text
-Problem, actor và workflow đã rõ, và hướng Workflow (không phải Agent) đã có lập luận vững. Tuy nhiên nhóm
-chưa thực hiện Phase 4 (validation với chuyên viên thật, research giải pháp đã có) và chưa định lượng được
-Rule/OCR thuần xử lý được bao nhiêu % hồ sơ. Domain tài chính có rủi ro compliance cao nên cần validate
-kỹ hơn trước khi Go.
-```
+1. Chọn 5–8 intent không giao dịch, ví dụ: lỗi ứng dụng, hỏi phí/dịch vụ, hỗ trợ thẻ, trạng thái hồ sơ, yêu cầu bổ sung giấy tờ.
+2. Tạo hoặc xin một bộ 30–50 case đã ẩn danh và gắn nhãn queue bởi người hiểu nghiệp vụ.
+3. Chạy hai cách: checklist/rule thủ công và workflow AI đề xuất.
+4. Đo thời gian triage, route đúng/sai, thông tin bị bỏ sót và số lần nhân viên sửa output.
+5. Không kết nối tài khoản thật, không dùng số tài khoản/số dư/CCCD thật và không tự gửi phản hồi cho khách hàng.
 
-Nếu Go, pilot nhỏ nhất là:
+### Điều kiện dừng / rollback
 
-```text
-Không áp dụng — quyết định hiện tại là Not Yet.
-```
+- Nếu route đúng thấp hơn 90% hoặc thấp hơn quy trình thủ công, quay về rule/checklist.
+- Nếu AI tạo đề xuất liên quan giao dịch, tư vấn tài chính hoặc xác thực danh tính, loại case khỏi workflow và chuyển người thật.
+- Nếu không có dữ liệu đủ sạch/ẩn danh, chỉ trình diễn trên dữ liệu giả lập; không tuyên bố đã chứng minh hiệu quả thực tế.
+- Nếu nhân viên phải sửa phần lớn output, giữ lại taxonomy và form chuẩn, chưa dùng AI.
 
-Nếu Not Yet, cần validate gì trước:
+## 10. Việc cần bổ sung trước khi nộp chính thức
 
-```text
-- Phỏng vấn 2-3 chuyên viên thẩm định thật để xác nhận baseline 2-4 giờ/hồ sơ và bottleneck đúng như mô tả.
-- Research 2-3 giải pháp/tool đã có trong ngành (VD: các nền tảng OCR tài liệu tài chính, credit scoring engine)
-  kèm link nguồn kiểm được.
-- Định lượng tỷ lệ % hồ sơ mà OCR/rule thuần đã xử lý đủ, để biết phần AI cần bù vào thực sự lớn bao nhiêu.
-- Làm rõ yêu cầu compliance/bảo mật dữ liệu hồ sơ vay trước khi thử nghiệm với dữ liệu thật.
-```
-
-Nếu No-Go, nên làm gì thay AI:
-
-```text
-Không áp dụng ở bước này.
-```
+- [ ] Điền danh sách thành viên nhóm và vai trò.
+- [ ] Thay các `[CẦN ĐIỀN]` bằng số liệu phỏng vấn/survey/log thật.
+- [ ] Ghi ngày, đối tượng và câu hỏi validation.
+- [ ] Bổ sung workflow dưới dạng ảnh/Mermaid nếu giảng viên yêu cầu.
+- [ ] Kiểm tra lại các intent/queue cùng người có hiểu biết nghiệp vụ ngân hàng.
+- [ ] Ghi rõ dữ liệu nào là giả lập, dữ liệu nào đã ẩn danh.
