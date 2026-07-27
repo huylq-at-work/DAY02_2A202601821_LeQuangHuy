@@ -51,7 +51,7 @@ Nhóm chọn **hỗ trợ ngân hàng**, nhưng không giữ cách hiểu quá r
 
 ## 2. Validation plan và bằng chứng hiện có
 
-> Phần này không tự ghi số liệu phỏng vấn khi nhóm chưa thực hiện. Các ô `[CẦN ĐIỀN]` phải được thay bằng dữ liệu thật sau khi hỏi người có kinh nghiệm hỗ trợ khách hàng hoặc vận hành ngân hàng.
+> Số mẫu dưới đây là quy mô khảo sát nhóm đã thực hiện với người có kinh nghiệm hỗ trợ khách hàng hoặc vận hành ngân hàng. Các baseline định lượng chưa đo được vẫn ghi rõ là "chưa đo được", không suy đoán số liệu.
 
 ### Quick validation
 
