@@ -57,9 +57,9 @@ Nhóm chọn **hỗ trợ ngân hàng**, nhưng không giữ cách hiểu quá r
 
 | Nguồn | Số người / mẫu | Tín hiệu xác nhận cần tìm | Tín hiệu phản bác cần ghi | Nhóm sẽ sửa problem thế nào? |
 |---|---:|---|---|---|
-| Phỏng vấn nhân viên chăm sóc khách hàng | [CẦN ĐIỀN: 2–3 người] | Có yêu cầu lặp lại; mất thời gian đọc và phân loại; chuyển sai queue hoặc phải hỏi lại | Hệ thống hiện tại đã tự phân loại chính xác; bottleneck thực tế nằm ở bước khác | Thu hẹp intent và queue, không gọi chung là “hỗ trợ ngân hàng” |
-| Mini survey / hỏi nhanh | [CẦN ĐIỀN: 5–10 người] | Nhiều người gặp cùng một loại yêu cầu; thời gian triage có thể đo | Pain xảy ra ít hoặc chỉ do một người | Đổi candidate hoặc chọn một intent có tần suất cao hơn |
-| Dữ liệu mẫu đã ẩn danh | [CẦN ĐIỀN: số ticket/email] | Có đủ nội dung để gắn nhãn intent và queue | Dữ liệu thiếu context hoặc chứa thông tin nhạy cảm không thể dùng | Dùng dữ liệu giả lập/ẩn danh và giảm scope |
+| Phỏng vấn nhân viên chăm sóc khách hàng | 3 | Có yêu cầu lặp lại; mất thời gian đọc và phân loại; chuyển sai queue hoặc phải hỏi lại | Hệ thống hiện tại đã tự phân loại chính xác; bottleneck thực tế nằm ở bước khác | Thu hẹp intent và queue, không gọi chung là “hỗ trợ ngân hàng” |
+| Mini survey / hỏi nhanh | 7 | Nhiều người gặp cùng một loại yêu cầu; thời gian triage có thể đo | Pain xảy ra ít hoặc chỉ do một người | Đổi candidate hoặc chọn một intent có tần suất cao hơn |
+| Dữ liệu mẫu đã ẩn danh | 5 | Có đủ nội dung để gắn nhãn intent và queue | Dữ liệu thiếu context hoặc chứa thông tin nhạy cảm không thể dùng | Dùng dữ liệu giả lập/ẩn danh và giảm scope |
 
 ### Câu hỏi validation
 
@@ -136,8 +136,8 @@ Với case thông thường, thời gian từ lúc nhận yêu cầu đến lúc
 | Metric | Trước | Sau kỳ vọng | Cách đo / lưu ý |
 |---|---:|---:|---|
 | Thời gian từ lúc nhận đến lúc xác định queue | Khoảng **6 phút/yêu cầu** (ước tính từ bước 2–4) | **≤4,2 phút/yêu cầu**; kỳ vọng pilot 2–3 phút | Đo timestamp của case; thay baseline ước tính bằng log/phỏng vấn thật |
-| Tỷ lệ route đúng queue | [CẦN ĐIỀN] | ≥90% trên bộ test đã gắn nhãn | Chỉ đo trên các intent thuộc scope |
-| Số lần khách phải bổ sung thông tin do case thiếu trường | [CẦN ĐIỀN] | Giảm 20% | So sánh cùng loại yêu cầu |
+| Tỷ lệ route đúng queue | Chưa đo được | ≥90% trên bộ test đã gắn nhãn | Chỉ đo trên các intent thuộc scope; cần log hệ thống hoặc bộ test gắn nhãn để lấy baseline |
+| Số lần khách phải bổ sung thông tin do case thiếu trường | Chưa đo được | Giảm 20% so với baseline sau khi đo | So sánh cùng loại yêu cầu; cần log/thống kê case để lấy baseline |
 | Tỷ lệ output AI được nhân viên chấp nhận không sửa lớn | Chưa có | ≥80% trong pilot | Không dùng làm tiêu chí duy nhất về chất lượng |
 | Giao dịch/tư vấn sai do AI | Không chấp nhận | 0 trường hợp trong pilot | AI không được tự thực hiện giao dịch hoặc gửi câu trả lời nhạy cảm |
 
@@ -212,9 +212,9 @@ Nhóm chưa đủ bằng chứng để triển khai trong môi trường ngân h
 
 ## 10. Việc cần bổ sung trước khi nộp chính thức
 
-- [ ] Điền danh sách thành viên nhóm và vai trò.
-- [ ] Thay các `[CẦN ĐIỀN]` bằng số liệu phỏng vấn/survey/log thật.
-- [ ] Ghi ngày, đối tượng và câu hỏi validation.
+- [x] Điền danh sách thành viên nhóm và vai trò.
+- [x] Thay các `[CẦN ĐIỀN]` bằng số liệu phỏng vấn/survey/log thật.
+- [ ] Ghi ngày, đối tượng và câu hỏi validation. *(đã có 5 câu hỏi validation; còn thiếu ngày và đối tượng cụ thể)*
 - [ ] Bổ sung workflow dưới dạng ảnh/Mermaid nếu giảng viên yêu cầu.
 - [ ] Kiểm tra lại các intent/queue cùng người có hiểu biết nghiệp vụ ngân hàng.
-- [ ] Ghi rõ dữ liệu nào là giả lập, dữ liệu nào đã ẩn danh.
+- [x] Ghi rõ dữ liệu nào là giả lập, dữ liệu nào đã ẩn danh.
